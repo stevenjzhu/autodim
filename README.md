@@ -11,4 +11,4 @@ Currently depends on xbacklight for functionality, but future versions will idea
     ./autodim
 
 # behavior
-When started, autodim will save you current brightness.  When a power supply is connected, the saved brightness will be restored.  On the other hand, autodim will save current brightness and adjust screen brightness to 30% when a power supply is disconnected.
+When started, autodim will save the current brightness.  When a power supply is connected, the saved brightness will be restored.  On the other hand, autodim will save current brightness and adjust screen brightness to 30% when a power supply is disconnected.
