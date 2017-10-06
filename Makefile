@@ -2,7 +2,6 @@ PROJECT = autodim
 
 CC = gcc
 CFLAGS = -I $(INCDIR) -Wall
-TFLAGS = -Wl,-eautodim
 
 SRCDIR = src
 OBJDIR = build
@@ -18,14 +17,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(PROJECT): $(OBJ)
-	gcc -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 run: $(PROJECT)
 	./$(PROJECT)
-
-# Compile into process instead of daemon
-test: $(OBJ)
-	gcc -o $@ $^ $(CFLAGS) $(TFLAGS)
 
 .PHONY: clean
 
