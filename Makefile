@@ -1,7 +1,7 @@
 PROJECT = autodim
 
 CC = gcc
-CFLAGS = -I $(INCDIR) -Wall -g
+CFLAGS = -I $(INCDIR) -Wall
 TFLAGS = -Wl,-eautodim
 
 SRCDIR = src
@@ -22,6 +22,10 @@ $(PROJECT): $(OBJ)
 
 run: $(PROJECT)
 	./$(PROJECT)
+
+# Compile into process instead of daemon
+test: $(OBJ)
+	gcc -o $@ $^ $(CFLAGS) $(TFLAGS)
 
 .PHONY: clean
 
