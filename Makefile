@@ -18,7 +18,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(PROJECT): $(OBJ)
-	gcc -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+run: $(PROJECT)
+	./$(PROJECT)
 
 run: $(PROJECT)
 	./$(PROJECT)

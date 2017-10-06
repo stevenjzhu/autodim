@@ -7,11 +7,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <syslog.h>
-#include <fcntl.h>
 
-int main(void)
-{
-  
+// #define DEBUG
+
+#ifndef DEBUG
+static void daemonize (void) {
   pid_t pid;
 
   pid = fork();
@@ -47,12 +47,22 @@ int main(void)
   openlog ("autodim", LOG_PID, LOG_DAEMON);
 
   syslog (LOG_NOTICE, "autodim started.");
+}
+#endif  // static void daemonize (void)
+
+int main(void)
+{
+  #ifndef DEBUG
+  daemonize();
+  #endif
 
 
   if (autodim())  exit(EXIT_FAILURE);
 
+  #ifndef DEBUG
   syslog (LOG_NOTICE, "autodim terminated.");
   closelog();
+  #endif
 
   return EXIT_SUCCESS;
 }
