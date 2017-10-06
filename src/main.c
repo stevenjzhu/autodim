@@ -56,6 +56,7 @@ int main(void)
   daemonize();
   #endif
 
+
   if (autodim())  exit(EXIT_FAILURE);
 
   #ifndef DEBUG
