@@ -1,7 +1,8 @@
 PROJECT = autodim
 
 CC = gcc
-CFLAGS = -I $(INCDIR) -Wall
+CFLAGS = -I $(INCDIR) -Wall -g
+TFLAGS = -Wl,-eautodim
 
 SRCDIR = src
 OBJDIR = build
@@ -18,6 +19,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 
 $(PROJECT): $(OBJ)
 	gcc -o $@ $^ $(CFLAGS)
+
+run: $(PROJECT)
+	./$(PROJECT)
 
 .PHONY: clean
 
